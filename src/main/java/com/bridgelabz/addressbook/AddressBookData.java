@@ -1,5 +1,6 @@
 package com.bridgelabz.addressbook;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class AddressBookData {
@@ -14,8 +15,10 @@ public class AddressBookData {
     public String city;
     public String state;
     public String zip;
+    public LocalDate date_added;
 
-    public AddressBookData(int id, int personId, int typeId, String firstName, String lastName, String phoneNumber, String email, String city, String state, String zip) {
+    public AddressBookData(int id, int personId, int typeId, String firstName, String lastName, String phoneNumber,
+                           String email, String city, String state, String zip, LocalDate date_added) {
 
         this.id = id;
         this.personId = personId;
@@ -27,6 +30,7 @@ public class AddressBookData {
         this.city = city;
         this.state = state;
         this.zip = zip;
+        this.date_added = date_added;
     }
 
     @Override

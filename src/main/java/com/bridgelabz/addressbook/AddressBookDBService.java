@@ -1,6 +1,7 @@
 package com.bridgelabz.addressbook;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,7 +60,8 @@ public class AddressBookDBService {
                 String city = resultSet.getString("city");
                 String state = resultSet.getString("state");
                 String zip = resultSet.getString("zip");
-                addressBookList.add(new AddressBookData(id,personId,typeId,firstName,lastName,phoneNumber,email,city,state,zip ));
+                LocalDate date_added = resultSet.getDate("date_added").toLocalDate();
+                addressBookList.add(new AddressBookData(id,personId,typeId,firstName,lastName,phoneNumber,email,city,state,zip,date_added ));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -102,4 +104,9 @@ public class AddressBookDBService {
     }
 
 
+    public List<AddressBookData> getEmployeePayrollForDateRange(LocalDate startDate, LocalDate endDate) {
+        String query = String.format("SELECT * FROM address_book WHERE date_added BETWEEN '%s' AND '%s';",
+                Date.valueOf(startDate), Date.valueOf(endDate));
+        return this.getAddressBookDataUsingDB(query);
+    }
 }
