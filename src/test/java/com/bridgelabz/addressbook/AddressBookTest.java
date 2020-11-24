@@ -47,5 +47,13 @@ public class AddressBookTest {
                 contactsByCity.containsValue(1.0));
     }
 
-    
+    @Test
+    public void givenNewContact_ShouldAddIntoTheAddressBookDataBase() {
+        AddressBookService addressBookService = new AddressBookService();
+        addressBookService.readAddressBookData(DB_IO);
+        addressBookService.addNewContact(1,1,"harinath","vatti","7483247010",
+                "devangmranganath","anatapur","AP","515231","Gorantla",LocalDate.now());
+        boolean result = addressBookService.checkRecordSyncWithDB("harinath");
+        Assert.assertTrue(result);
+    }
 }

@@ -5,7 +5,6 @@ import java.util.Objects;
 
 public class AddressBookData {
 
-    public  int id;
     public  int personId;
     public int typeId;
     public String firstName;
@@ -15,12 +14,12 @@ public class AddressBookData {
     public String city;
     public String state;
     public String zip;
+    public String address;
     public LocalDate date_added;
 
-    public AddressBookData(int id, int personId, int typeId, String firstName, String lastName, String phoneNumber,
-                           String email, String city, String state, String zip, LocalDate date_added) {
+    public AddressBookData( int personId, int typeId, String firstName, String lastName, String phoneNumber,
+                           String email, String city, String state, String zip,String address, LocalDate date_added) {
 
-        this.id = id;
         this.personId = personId;
         this.typeId = typeId;
         this.firstName = firstName;
@@ -30,31 +29,14 @@ public class AddressBookData {
         this.city = city;
         this.state = state;
         this.zip = zip;
+        this.address=address;
         this.date_added = date_added;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof AddressBookData)) return false;
-        AddressBookData that = (AddressBookData) o;
-        return id == that.id &&
-                personId == that.personId &&
-                typeId == that.typeId &&
-                Objects.equals(firstName, that.firstName) &&
-                Objects.equals(lastName, that.lastName) &&
-                Objects.equals(phoneNumber, that.phoneNumber) &&
-                Objects.equals(email, that.email) &&
-                Objects.equals(city, that.city) &&
-                Objects.equals(state, that.state) &&
-                Objects.equals(zip, that.zip);
     }
 
     @Override
     public String toString() {
         return "AddressBookData{" +
-                "id=" + id +
-                ", personId=" + personId +
+                "personId=" + personId +
                 ", typeId=" + typeId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
@@ -63,6 +45,27 @@ public class AddressBookData {
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", zip='" + zip + '\'' +
+                ", address='" + address + '\'' +
+                ", date_added=" + date_added +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof AddressBookData)) return false;
+        AddressBookData that = (AddressBookData) o;
+        return personId == that.personId &&
+                typeId == that.typeId &&
+                Objects.equals(firstName, that.firstName) &&
+                Objects.equals(lastName, that.lastName) &&
+                Objects.equals(phoneNumber, that.phoneNumber) &&
+                Objects.equals(email, that.email) &&
+                Objects.equals(city, that.city) &&
+                Objects.equals(state, that.state) &&
+                Objects.equals(zip, that.zip) &&
+                Objects.equals(address, that.address) &&
+                Objects.equals(date_added, that.date_added);
+    }
+
 }

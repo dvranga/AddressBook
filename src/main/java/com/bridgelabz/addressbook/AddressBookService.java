@@ -7,6 +7,7 @@ import java.util.Map;
 public class AddressBookService {
 
     private List<AddressBookData> addressBookList;
+
     public enum IOService{DB_IO}
     private static AddressBookDBService addressBookDBService;
 
@@ -51,13 +52,19 @@ public class AddressBookService {
         return null;
     }
 
-
     public Map<String, Double> contactsByCity(IOService ioService) {
         if (ioService.equals(IOService.DB_IO)) {
             return addressBookDBService.getCountOfContactsByCity();
         }
         return null;
     }
+
+    public void addNewContact(int person_id, int type_id, String first_name, String last_name,
+                              String phone_number, String email, String city, String state, String zip, String address, LocalDate localDate) {
+        addressBookList.add(addressBookDBService.addNewContact(person_id, type_id, first_name, last_name,
+                phone_number,email,city,state,zip,address,localDate));
+    }
+
 }
 
 

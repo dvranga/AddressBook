@@ -62,8 +62,9 @@ public class AddressBookDBService {
                 String city = resultSet.getString("city");
                 String state = resultSet.getString("state");
                 String zip = resultSet.getString("zip");
+                String address=resultSet.getString("address");
                 LocalDate date_added = resultSet.getDate("date_added").toLocalDate();
-                addressBookList.add(new AddressBookData(id,personId,typeId,firstName,lastName,phoneNumber,email,city,state,zip,date_added ));
+                addressBookList.add(new AddressBookData(personId,typeId,firstName,lastName,phoneNumber,email,city,state,zip,address,date_added ));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -127,5 +128,39 @@ public class AddressBookDBService {
             e.printStackTrace();
         }
         return countOfContacts;
+    }
+
+    public AddressBookData addNewContact(int person_id, int type_id, String first_name, String last_name, String phone_number,
+                                         String email, String city, String state, String zip, String address, LocalDate localDate) {
+        Connection connection = null;
+        AddressBookData addressBookData=null;
+        try {
+            connection = this.getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try (Statement statement = connection.createStatement()) {
+            String sql = String.format("INSERT INTO address_book (`person_id`,`type_id`,`first_name`,`last_name`,`phone_number`,`email`,`city`,`state`,`zip`,`address`,`date_added`) " +
+                    " VALUES (%s,%s,'%s','%s','%s','%s','%s','%s','%s','%s','%s')", person_id,type_id,first_name,last_name,phone_number,email,city,state,zip,address,Date.valueOf(localDate));
+            System.out.println(sql+" sql");
+            int rowAffected = statement.executeUpdate(sql);
+            if (rowAffected == 1) {
+                addressBookData = new AddressBookData(person_id, type_id, first_name, last_name,
+                        phone_number,email,city,state,zip,address,localDate);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+       finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return addressBookData;
     }
 }
