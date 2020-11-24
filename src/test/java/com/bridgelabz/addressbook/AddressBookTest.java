@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 import static com.bridgelabz.addressbook.AddressBookService.IOService.DB_IO;
 
@@ -35,4 +36,16 @@ public class AddressBookTest {
                 addressBookService.readEmployeePayrollForDateRange(DB_IO, startDate, endDate);
         Assert.assertEquals(1,employeePayrollData.size());
     }
+
+    @Test
+    public void givenCity_ShouldRetrieveTheNumberOfContacts_BasedOnCity() {
+        AddressBookService addressBookService = new AddressBookService();
+        addressBookService.readAddressBookData(DB_IO);
+        Map<String, Double> contactsByCity = addressBookService.contactsByCity(DB_IO);
+        System.out.println(contactsByCity.containsKey("anatapur")+" "+contactsByCity.containsValue(1.0));
+        Assert.assertTrue(contactsByCity.containsKey("anatapur") &&
+                contactsByCity.containsValue(1.0));
+    }
+
+    
 }

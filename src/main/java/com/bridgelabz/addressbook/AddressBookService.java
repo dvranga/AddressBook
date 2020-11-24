@@ -2,6 +2,7 @@ package com.bridgelabz.addressbook;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 public class AddressBookService {
 
@@ -51,6 +52,12 @@ public class AddressBookService {
     }
 
 
+    public Map<String, Double> contactsByCity(IOService ioService) {
+        if (ioService.equals(IOService.DB_IO)) {
+            return addressBookDBService.getCountOfContactsByCity();
+        }
+        return null;
+    }
 }
 
 

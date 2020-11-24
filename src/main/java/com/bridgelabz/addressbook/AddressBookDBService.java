@@ -3,7 +3,9 @@ package com.bridgelabz.addressbook;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AddressBookDBService {
     private static AddressBookDBService addressBookDBService;
@@ -108,5 +110,22 @@ public class AddressBookDBService {
         String query = String.format("SELECT * FROM address_book WHERE date_added BETWEEN '%s' AND '%s';",
                 Date.valueOf(startDate), Date.valueOf(endDate));
         return this.getAddressBookDataUsingDB(query);
+    }
+
+    public Map<String, Double> getCountOfContactsByCity() {
+        String query = "SELECT city,COUNT(city) as count from address_book group by city;";
+        Map<String, Double> countOfContacts = new HashMap<>();
+        try (Connection connection = this.getConnection()) {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                String city = resultSet.getString("city");
+                double count = resultSet.getDouble("count");
+                countOfContacts.put(city, count);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return countOfContacts;
     }
 }
