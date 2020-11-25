@@ -27,7 +27,7 @@ public class AddressBookDBService {
         String password = "root";
         Connection connection;
         connection = DriverManager.getConnection(jdbcURL, userName, password);
-        System.out.println(connection + " connection succesful");
+        System.out.println(connection + " connection successful");
         return connection;
     }
 
@@ -130,37 +130,118 @@ public class AddressBookDBService {
         return countOfContacts;
     }
 
-    public AddressBookData addNewContact(int person_id, int type_id, String first_name, String last_name, String phone_number,
+    public AddressBookData addNewContact( String type, String first_name, String last_name, String phone_number,
                                          String email, String city, String state, String zip, String address, LocalDate localDate) {
+
+        int person_Id = -1;
+        int type_Id=-1;
         Connection connection = null;
         AddressBookData addressBookData=null;
         try {
             connection = this.getConnection();
+            connection.setAutoCommit(false);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         try (Statement statement = connection.createStatement()) {
+            String sql = String.format("INSERT INTO people (person_name) VALUES" +
+                    "('%s')", first_name);
+            int rowAffected = statement.executeUpdate(sql, statement.RETURN_GENERATED_KEYS);
+            if (rowAffected == 1) {
+                ResultSet resultSet = statement.getGeneratedKeys();
+                System.out.println(resultSet.toString());
+                if (resultSet.next()) {
+                    person_Id = resultSet.getInt(1);
+                    System.out.println(person_Id+" person_Id");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        try (Statement statement = connection.createStatement()) {
+            String sql = String.format("Select type_id from address_type where type='%s' ; ",type);
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                int type_id = resultSet.getInt("type_id");
+                System.out.println(type_id+" type_id");
+                type_Id=type_id;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        try (Statement statement = connection.createStatement()) {
             String sql = String.format("INSERT INTO address_book (`person_id`,`type_id`,`first_name`,`last_name`,`phone_number`,`email`,`city`,`state`,`zip`,`address`,`date_added`) " +
-                    " VALUES (%s,%s,'%s','%s','%s','%s','%s','%s','%s','%s','%s')", person_id,type_id,first_name,last_name,phone_number,email,city,state,zip,address,Date.valueOf(localDate));
+                    " VALUES (%s,%s,'%s','%s','%s','%s','%s','%s','%s','%s','%s')", person_Id,type_Id,first_name,last_name,phone_number,email,city,state,zip,address,Date.valueOf(localDate));
             System.out.println(sql+" sql");
             int rowAffected = statement.executeUpdate(sql);
             if (rowAffected == 1) {
-                addressBookData = new AddressBookData(person_id, type_id, first_name, last_name,
+                addressBookData = new AddressBookData(person_Id, type_Id, first_name, last_name,
                         phone_number,email,city,state,zip,address,localDate);
             }
         } catch (SQLException e) {
             e.printStackTrace();
-
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
         }
-       finally {
+        try {
+            connection.commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        finally {
             if (connection != null) {
                 try {
                     connection.close();
                 } catch (SQLException e) {
                     e.printStackTrace();
+                    try {
+                        connection.rollback();
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
                 }
             }
         }
         return addressBookData;
+    }
+
+    public void updateMultipleContacts(AddressBookData addressBookData) {
+        Map<Integer,Boolean> addStatus = new HashMap<>();
+        Runnable task = ()->{
+            addStatus.put(addressBookData.hashCode(),false);
+            System.out.println(addressBookData.firstName+" Thread is adding");
+            this.addNewContact(addressBookData.type,addressBookData.firstName,addressBookData.lastName,addressBookData.phoneNumber,addressBookData.email,addressBookData.city,
+                    addressBookData.state,addressBookData.zip,addressBookData.address,addressBookData.date_added);
+            System.out.println(addressBookData.firstName+" Thread is added");
+            addStatus.put(addressBookData.hashCode(),true);
+        };
+//        System.out.println(addressBookData.firstName+" Thread is adding");
+//        this.addNewContact(addressBookData.type,addressBookData.firstName,addressBookData.lastName,addressBookData.phoneNumber,addressBookData.email,addressBookData.city,
+//                addressBookData.state,addressBookData.zip,addressBookData.address,addressBookData.date_added);
+//        System.out.println(addressBookData.firstName+" Thread is added");
+//        addStatus.put(addressBookData.hashCode(),true);
+        Thread thread=new Thread(task,addressBookData.firstName);
+        thread.start();
+        while(addStatus.containsValue(false)) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

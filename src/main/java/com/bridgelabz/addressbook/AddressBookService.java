@@ -7,7 +7,6 @@ import java.util.Map;
 public class AddressBookService {
 
     private List<AddressBookData> addressBookList;
-
     public enum IOService{DB_IO}
     private static AddressBookDBService addressBookDBService;
 
@@ -59,10 +58,29 @@ public class AddressBookService {
         return null;
     }
 
-    public void addNewContact(int person_id, int type_id, String first_name, String last_name,
+    public void addNewContact( String type, String first_name, String last_name,
                               String phone_number, String email, String city, String state, String zip, String address, LocalDate localDate) {
-        addressBookList.add(addressBookDBService.addNewContact(person_id, type_id, first_name, last_name,
+        addressBookList.add(addressBookDBService.addNewContact(type, first_name, last_name,
                 phone_number,email,city,state,zip,address,localDate));
+    }
+
+    public void addMultipleContacts(List<AddressBookData> asList) {
+        Runnable task= () ->  {
+            for (AddressBookData addressBookData:asList) {
+                System.out.println(addressBookData.firstName+" contact is adding");
+                addressBookDBService.updateMultipleContacts(addressBookData);
+                System.out.println(addressBookData.firstName+" contact is added");
+            }
+        };
+        Thread thread=new Thread(task);
+        thread.start();
+        while(asList.isEmpty()) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }

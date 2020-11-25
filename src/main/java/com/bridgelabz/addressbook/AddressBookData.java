@@ -7,6 +7,7 @@ public class AddressBookData {
 
     public  int personId;
     public int typeId;
+    public String type;
     public String firstName;
     public String lastName;
     public String phoneNumber;
@@ -30,6 +31,21 @@ public class AddressBookData {
         this.state = state;
         this.zip = zip;
         this.address=address;
+        this.date_added = date_added;
+    }
+
+
+    public AddressBookData(String type, String first_name, String last_name, String phone_number, String email, String city, String state, String zip, String address, LocalDate date_added) {
+
+        this.type = type;
+        firstName = first_name;
+        lastName = last_name;
+        phoneNumber = phone_number;
+        this.email = email;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+        this.address = address;
         this.date_added = date_added;
     }
 

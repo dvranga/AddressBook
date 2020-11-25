@@ -49,23 +49,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AddressBookTest.givenNewContact_ShouldAddIntoTheAddressBookDataBase">
-    <configuration name="AddressBookTest.givenAddressBookInDB_WhenRetrieved_ShouldMatchThePeopleCount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="addressbook" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bridgelabz.addressbook.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.bridgelabz.addressbook" />
-      <option name="MAIN_CLASS_NAME" value="com.bridgelabz.addressbook.AddressBookTest" />
-      <option name="METHOD_NAME" value="givenAddressBookInDB_WhenRetrieved_ShouldMatchThePeopleCount" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.AddressBookTest.givenMultipleContacts_ShouldAddIntoTheDB_AndShouldSyncWithDBUsingThread">
     <configuration name="AddressBookTest.givenCity_ShouldRetrieveTheNumberOfContacts_BasedOnCity" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="addressbook" />
       <extension name="coverage">
@@ -93,6 +77,22 @@
       <option name="PACKAGE_NAME" value="com.bridgelabz.addressbook" />
       <option name="MAIN_CLASS_NAME" value="com.bridgelabz.addressbook.AddressBookTest" />
       <option name="METHOD_NAME" value="givenDate_ShouldRetrieveTheAddressBookRecord_BasedOnThePerticularRange" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AddressBookTest.givenMultipleContacts_ShouldAddIntoTheDB_AndShouldSyncWithDBUsingThread" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="addressbook" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bridgelabz.addressbook.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bridgelabz.addressbook" />
+      <option name="MAIN_CLASS_NAME" value="com.bridgelabz.addressbook.AddressBookTest" />
+      <option name="METHOD_NAME" value="givenMultipleContacts_ShouldAddIntoTheDB_AndShouldSyncWithDBUsingThread" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -132,11 +132,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AddressBookTest.givenMultipleContacts_ShouldAddIntoTheDB_AndShouldSyncWithDBUsingThread" />
         <item itemvalue="JUnit.AddressBookTest.givenNewContact_ShouldAddIntoTheAddressBookDataBase" />
         <item itemvalue="JUnit.AddressBookTest.givenCity_ShouldRetrieveTheNumberOfContacts_BasedOnCity" />
         <item itemvalue="JUnit.AddressBookTest.givenDate_ShouldRetrieveTheAddressBookRecord_BasedOnThePerticularRange" />
         <item itemvalue="JUnit.AddressBookTest.givenNewPhoneNumber_ShouldUpdateTheRecorAndSyncWithDataBase" />
-        <item itemvalue="JUnit.AddressBookTest.givenAddressBookInDB_WhenRetrieved_ShouldMatchThePeopleCount" />
       </list>
     </recent_temporary>
   </component>
@@ -150,7 +150,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606205688734</updated>
-      <workItem from="1606205692164" duration="15995000" />
+      <workItem from="1606205692164" duration="16415000" />
+      <workItem from="1606289774235" duration="8050000" />
     </task>
     <servers />
   </component>
@@ -162,32 +163,12 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/test/java/com/bridgelabz/addressbook/AddressBookTest.java</url>
-          <line>50</line>
-          <properties class="com.bridgelabz.addressbook.AddressBookTest" method="givenNewContact_ShouldAddIntoTheAddressBookDataBase">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/bridgelabz/addressbook/AddressBookDBService.java</url>
-          <line>132</line>
-          <properties class="com.bridgelabz.addressbook.AddressBookDBService" method="addNewContact">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

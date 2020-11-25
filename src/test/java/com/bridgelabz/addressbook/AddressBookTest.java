@@ -3,7 +3,10 @@ package com.bridgelabz.addressbook;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -18,7 +21,7 @@ public class AddressBookTest {
     }
 
     @Test
-    public void givenNewPhoneNumber_ShouldUpdateTheRecorAndSyncWithDataBase() throws AddressBookException {
+    public void givenNewPhoneNumber_ShouldUpdateTheRecordAndSyncWithDataBase() throws AddressBookException {
         AddressBookService addressBookService = new AddressBookService();
         addressBookService.readAddressBookData(DB_IO);
         addressBookService.updateRecord("ranganath", "7483247031");
@@ -51,9 +54,27 @@ public class AddressBookTest {
     public void givenNewContact_ShouldAddIntoTheAddressBookDataBase() {
         AddressBookService addressBookService = new AddressBookService();
         addressBookService.readAddressBookData(DB_IO);
-        addressBookService.addNewContact(1,1,"harinath","vatti","7483247010",
+        addressBookService.addNewContact("friend","mokshagna","vatti","7483247010",
                 "devangmranganath","anatapur","AP","515231","Gorantla",LocalDate.now());
-        boolean result = addressBookService.checkRecordSyncWithDB("harinath");
+        boolean result = addressBookService.checkRecordSyncWithDB("mokshagna");
         Assert.assertTrue(result);
     }
+
+    @Test
+    public void givenMultipleContacts_ShouldAddIntoTheDB_AndShouldSyncWithDBUsingThread() throws AddressBookException {
+        AddressBookData[] arrayOfEmps = {new AddressBookData("friend","rajesh","vatti","7483247011","devangmranganath","anatapur","AP","515231","Gorantla",LocalDate.now()),
+                                        new AddressBookData("family","mukesh","vatti","7483247012","devangmranganath","anatapur","AP","515231","Gorantla",LocalDate.now()),
+                                        new AddressBookData("professional","naresh","vatti","7483247013","devangmranganath","anatapur","AP","515231","Gorantla",LocalDate.now()),
+                                        new AddressBookData("friend","lokesh","vatti","7483247014","devangmranganath","anatapur","AP","515231","Gorantla",LocalDate.now())
+                        };
+        AddressBookService addressBookService = new AddressBookService();
+        addressBookService.readAddressBookData(DB_IO);
+        Instant start = Instant.now();
+        addressBookService.addMultipleContacts(Arrays.asList(arrayOfEmps));
+        Instant end = Instant.now();
+        System.out.println("Duration with thread: " + Duration.between(start, end));
+        boolean result = addressBookService.checkRecordSyncWithDB("lokesh");
+        Assert.assertTrue(result);
+    }
+
 }
