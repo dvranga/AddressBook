@@ -6,6 +6,9 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bridgelabz/addressbook/AddressBookData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bridgelabz/addressbook/AddressBookData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bridgelabz/addressbook/AddressBookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bridgelabz/addressbook/AddressBookService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/bridgelabz/addressbook/AddressBookTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bridgelabz/addressbook/AddressBookTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bridgelabz/addressbook/AddressBookData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bridgelabz/addressbook/AddressBookData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bridgelabz/addressbook/AddressBookService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bridgelabz/addressbook/AddressBookService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/bridgelabz/addressbook/AddressBookTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/bridgelabz/addressbook/AddressBookTest.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +51,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AddressBookTest.givenNewContact_WhenAddedIntoTheJsonServer_ShouldMatchTheCountAndSyncWithDB">
+  <component name="RunManager" selected="JUnit.AddressBookTest.givenMultipleNewContact_WhenAddedIntoTheJsonServer_ShouldMatchTheCountAndSyncWithDB">
     <configuration name="AddressBookTest.givenAddressBookDataInJson_WhenRetrievedShouldMatchTheCount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="addressbook" />
       <extension name="coverage">
@@ -65,22 +68,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AddressBookTest.givenCity_ShouldRetrieveTheNumberOfContacts_BasedOnCity" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="addressbook" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bridgelabz.addressbook.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.bridgelabz.addressbook" />
-      <option name="MAIN_CLASS_NAME" value="com.bridgelabz.addressbook.AddressBookTest" />
-      <option name="METHOD_NAME" value="givenCity_ShouldRetrieveTheNumberOfContacts_BasedOnCity" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="AddressBookTest.givenMultipleContacts_ShouldAddIntoTheDB_AndShouldSyncWithDBUsingThread" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="addressbook" />
       <extension name="coverage">
@@ -92,6 +79,22 @@
       <option name="PACKAGE_NAME" value="com.bridgelabz.addressbook" />
       <option name="MAIN_CLASS_NAME" value="com.bridgelabz.addressbook.AddressBookTest" />
       <option name="METHOD_NAME" value="givenMultipleContacts_ShouldAddIntoTheDB_AndShouldSyncWithDBUsingThread" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AddressBookTest.givenMultipleNewContact_WhenAddedIntoTheJsonServer_ShouldMatchTheCountAndSyncWithDB" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="addressbook" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bridgelabz.addressbook.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bridgelabz.addressbook" />
+      <option name="MAIN_CLASS_NAME" value="com.bridgelabz.addressbook.AddressBookTest" />
+      <option name="METHOD_NAME" value="givenMultipleNewContact_WhenAddedIntoTheJsonServer_ShouldMatchTheCountAndSyncWithDB" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -131,11 +134,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AddressBookTest.givenMultipleNewContact_WhenAddedIntoTheJsonServer_ShouldMatchTheCountAndSyncWithDB" />
         <item itemvalue="JUnit.AddressBookTest.givenNewContact_WhenAddedIntoTheJsonServer_ShouldMatchTheCountAndSyncWithDB" />
         <item itemvalue="JUnit.AddressBookTest.givenAddressBookDataInJson_WhenRetrievedShouldMatchTheCount" />
         <item itemvalue="JUnit.AddressBookTest.givenMultipleContacts_ShouldAddIntoTheDB_AndShouldSyncWithDBUsingThread" />
         <item itemvalue="JUnit.AddressBookTest.givenNewContact_ShouldAddIntoTheAddressBookDataBase" />
-        <item itemvalue="JUnit.AddressBookTest.givenCity_ShouldRetrieveTheNumberOfContacts_BasedOnCity" />
       </list>
     </recent_temporary>
   </component>
@@ -151,7 +154,7 @@
       <updated>1606205688734</updated>
       <workItem from="1606205692164" duration="16415000" />
       <workItem from="1606289774235" duration="8710000" />
-      <workItem from="1606374219013" duration="4928000" />
+      <workItem from="1606374219013" duration="9260000" />
     </task>
     <servers />
   </component>
@@ -170,5 +173,24 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/com/bridgelabz/addressbook/AddressBookTest.java</url>
+          <line>115</line>
+          <properties class="com.bridgelabz.addressbook.AddressBookTest" method="givenNewContact_WhenAddedIntoTheJsonServer_ShouldMatchTheCountAndSyncWithDB">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/bridgelabz/addressbook/AddressBookData.java</url>
+          <line>5</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

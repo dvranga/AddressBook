@@ -100,7 +100,8 @@ public class AddressBookTest {
         RequestSpecification request = RestAssured.given();
         request.header("Content-Type", "application/json");
         request.body(json);
-        return request.post("/addressbook");
+        Response post = request.post("/addressbook");
+        return post;
     }
 
     @Test
@@ -116,20 +117,45 @@ public class AddressBookTest {
         AddressBookData[] addressList = getAddressList();
         AddressBookService addressBookService;
         addressBookService= new AddressBookService(Arrays.asList(addressList));
-        AddressBookData addressBookData = null;
-        addressBookData = new AddressBookData(4, "mahesh", "vatti", "Gorantla",
-                "anatapur", "AP", "515231", "7483247013", "mahesh@gmail.com");
+        AddressBookData  addressBookData = new AddressBookData(1,1, "mallesh", "vatti", "Gorantla",
+                "anatapur", "AP", "515231", "7483247013", "mahesh@gmail.com",LocalDate.now());
         Response response = addContactToJsonServer(addressBookData);
         int statusCode = response.getStatusCode();
         Assert.assertEquals(201, statusCode);
 
+        System.out.println(AddressBookData.class.toString()+" **adbc");
         addressBookData = new Gson().fromJson( response.asString(), AddressBookData.class);
-        System.out.println(addressBookData);
+        System.out.println(addressBookData.toString());
         addressBookService.addAddressBook(addressBookData, REST_IO);
         long entries = addressBookService.countEntries(REST_IO);
         Assert.assertEquals(4,entries);
-
     }
+
+    @Test
+    public void givenMultipleNewContact_WhenAddedIntoTheJsonServer_ShouldMatchTheCountAndSyncWithDB() {
+        AddressBookData[] addressList = getAddressList();
+        AddressBookService addressBookService;
+        addressBookService= new AddressBookService(Arrays.asList(addressList));
+        AddressBookData[] arrayOfContacts = {
+                new AddressBookData(1,1, "mahesh", "vatti", "Gorantla",
+                "anatapur", "AP", "515231", "7483247013", "mahesh@gmail.com",LocalDate.now()),
+                new AddressBookData(1,1, "mahesh", "vatti", "Gorantla",
+                "anatapur", "AP", "515231", "7483247013", "mahesh@gmail.com",LocalDate.now()),
+                new AddressBookData(1,1, "mahesh", "vatti", "Gorantla",
+                        "anatapur", "AP", "515231", "7483247013", "mahesh@gmail.com",LocalDate.now())
+        };
+        for (AddressBookData addressBookData : arrayOfContacts) {
+            Response response = addContactToJsonServer(addressBookData);
+            int statusCode = response.getStatusCode();
+            Assert.assertEquals(201,statusCode);
+            addressBookData = new Gson().fromJson(response.asString(), AddressBookData.class);
+            addressBookService.addAddressBook(addressBookData,REST_IO);
+        }
+        long entries = addressBookService.countEntries(REST_IO);
+        Assert.assertEquals(7,entries);
+    }
+
+
 
 }
 
