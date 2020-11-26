@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3493a060-b85b-471c-b2f6-4aa9fbce2353" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bridgelabz/addressbook/AddressBookData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bridgelabz/addressbook/AddressBookData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bridgelabz/addressbook/AddressBookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bridgelabz/addressbook/AddressBookService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/bridgelabz/addressbook/AddressBookTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bridgelabz/addressbook/AddressBookTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bridgelabz/addressbook/AddressBookData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bridgelabz/addressbook/AddressBookData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bridgelabz/addressbook/AddressBookService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bridgelabz/addressbook/AddressBookService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/bridgelabz/addressbook/AddressBookTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/bridgelabz/addressbook/AddressBookTest.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -154,7 +149,7 @@
       <updated>1606205688734</updated>
       <workItem from="1606205692164" duration="16415000" />
       <workItem from="1606289774235" duration="8710000" />
-      <workItem from="1606374219013" duration="9260000" />
+      <workItem from="1606374219013" duration="11241000" />
     </task>
     <servers />
   </component>
@@ -184,11 +179,6 @@
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/bridgelabz/addressbook/AddressBookData.java</url>
-          <line>5</line>
-          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
