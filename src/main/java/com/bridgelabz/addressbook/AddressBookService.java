@@ -1,18 +1,24 @@
 package com.bridgelabz.addressbook;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class AddressBookService {
 
     private List<AddressBookData> addressBookList;
-    public enum IOService{DB_IO}
+    public enum IOService{DB_IO,REST_IO,FILE_IO}
     private static AddressBookDBService addressBookDBService;
 
     public AddressBookService() {
         addressBookDBService = AddressBookDBService.getInstance();
     }
+    public AddressBookService(List<AddressBookData> addressBookList) {
+        this();
+        this.addressBookList = new ArrayList<>(addressBookList);
+    }
+
 
     public List<AddressBookData> readAddressBookData(IOService ioService) {
         if (ioService.equals(IOService.DB_IO)) {
@@ -81,6 +87,12 @@ public class AddressBookService {
                 e.printStackTrace();
             }
         }
+    }
+
+    public long countEntries(AddressBookService.IOService ioService) {
+        if (ioService.equals(IOService.FILE_IO))
+            return new AddressBookFileIOService().countEntries();
+        return addressBookList.size();
     }
 
 }
