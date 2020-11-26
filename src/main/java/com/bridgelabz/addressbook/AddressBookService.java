@@ -95,6 +95,17 @@ public class AddressBookService {
         return addressBookList.size();
     }
 
+    public void addAddressBook(AddressBookData addressBookData, IOService ioService) {
+        if (ioService.equals(IOService.DB_IO)) {
+            this.addNewContact("friend", "mokshagna", "vatti", "7483247010",
+                    "devangmranganath", "anatapur", "AP", "515231", "Gorantla", LocalDate.now());
+        } else {
+            boolean add = addressBookList.add(addressBookData);
+            System.out.println(add);
+        }
+    }
+
+
 }
 
 

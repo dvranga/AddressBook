@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3493a060-b85b-471c-b2f6-4aa9fbce2353" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bridgelabz/addressbook/AddressBookFileIOService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bridgelabz/addressbook/AddressBookData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bridgelabz/addressbook/AddressBookData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bridgelabz/addressbook/AddressBookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bridgelabz/addressbook/AddressBookService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/bridgelabz/addressbook/AddressBookTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bridgelabz/addressbook/AddressBookTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bridgelabz/addressbook/AddressBookDBService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bridgelabz/addressbook/AddressBookDBService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bridgelabz/addressbook/AddressBookService$IOService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bridgelabz/addressbook/AddressBookService$IOService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bridgelabz/addressbook/AddressBookService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bridgelabz/addressbook/AddressBookService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/bridgelabz/addressbook/AddressBookTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/bridgelabz/addressbook/AddressBookTest.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +48,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AddressBookTest.givenAddressBookDataInJson_WhenRetrievedShouldMatchTheCount">
+  <component name="RunManager" selected="JUnit.AddressBookTest.givenNewContact_WhenAddedIntoTheJsonServer_ShouldMatchTheCountAndSyncWithDB">
     <configuration name="AddressBookTest.givenAddressBookDataInJson_WhenRetrievedShouldMatchTheCount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="addressbook" />
       <extension name="coverage">
@@ -81,22 +76,6 @@
       <option name="PACKAGE_NAME" value="com.bridgelabz.addressbook" />
       <option name="MAIN_CLASS_NAME" value="com.bridgelabz.addressbook.AddressBookTest" />
       <option name="METHOD_NAME" value="givenCity_ShouldRetrieveTheNumberOfContacts_BasedOnCity" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AddressBookTest.givenDate_ShouldRetrieveTheAddressBookRecord_BasedOnThePerticularRange" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="addressbook" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bridgelabz.addressbook.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.bridgelabz.addressbook" />
-      <option name="MAIN_CLASS_NAME" value="com.bridgelabz.addressbook.AddressBookTest" />
-      <option name="METHOD_NAME" value="givenDate_ShouldRetrieveTheAddressBookRecord_BasedOnThePerticularRange" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -134,13 +113,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AddressBookTest.givenNewContact_WhenAddedIntoTheJsonServer_ShouldMatchTheCountAndSyncWithDB" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="addressbook" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bridgelabz.addressbook.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bridgelabz.addressbook" />
+      <option name="MAIN_CLASS_NAME" value="com.bridgelabz.addressbook.AddressBookTest" />
+      <option name="METHOD_NAME" value="givenNewContact_WhenAddedIntoTheJsonServer_ShouldMatchTheCountAndSyncWithDB" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AddressBookTest.givenNewContact_WhenAddedIntoTheJsonServer_ShouldMatchTheCountAndSyncWithDB" />
         <item itemvalue="JUnit.AddressBookTest.givenAddressBookDataInJson_WhenRetrievedShouldMatchTheCount" />
         <item itemvalue="JUnit.AddressBookTest.givenMultipleContacts_ShouldAddIntoTheDB_AndShouldSyncWithDBUsingThread" />
         <item itemvalue="JUnit.AddressBookTest.givenNewContact_ShouldAddIntoTheAddressBookDataBase" />
         <item itemvalue="JUnit.AddressBookTest.givenCity_ShouldRetrieveTheNumberOfContacts_BasedOnCity" />
-        <item itemvalue="JUnit.AddressBookTest.givenDate_ShouldRetrieveTheAddressBookRecord_BasedOnThePerticularRange" />
       </list>
     </recent_temporary>
   </component>
@@ -156,7 +151,7 @@
       <updated>1606205688734</updated>
       <workItem from="1606205692164" duration="16415000" />
       <workItem from="1606289774235" duration="8710000" />
-      <workItem from="1606374219013" duration="2680000" />
+      <workItem from="1606374219013" duration="4928000" />
     </task>
     <servers />
   </component>

@@ -3,6 +3,7 @@ package com.bridgelabz.addressbook;
 import com.google.gson.Gson;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -94,6 +95,14 @@ public class AddressBookTest {
         return addressBookData;
     }
 
+    private Response addContactToJsonServer(AddressBookData addressBookData) {
+        String json = new Gson().toJson(addressBookData);
+        RequestSpecification request = RestAssured.given();
+        request.header("Content-Type", "application/json");
+        request.body(json);
+        return request.post("/addressbook");
+    }
+
     @Test
     public void givenAddressBookDataInJson_WhenRetrievedShouldMatchTheCount() {
         AddressBookData[] addressBookData= getAddressList();
@@ -102,6 +111,25 @@ public class AddressBookTest {
         Assert.assertEquals(2,entries);
     }
 
+    @Test
+    public void givenNewContact_WhenAddedIntoTheJsonServer_ShouldMatchTheCountAndSyncWithDB() {
+        AddressBookData[] addressList = getAddressList();
+        AddressBookService addressBookService;
+        addressBookService= new AddressBookService(Arrays.asList(addressList));
+        AddressBookData addressBookData = null;
+        addressBookData = new AddressBookData(4, "mahesh", "vatti", "Gorantla",
+                "anatapur", "AP", "515231", "7483247013", "mahesh@gmail.com");
+        Response response = addContactToJsonServer(addressBookData);
+        int statusCode = response.getStatusCode();
+        Assert.assertEquals(201, statusCode);
+
+        addressBookData = new Gson().fromJson( response.asString(), AddressBookData.class);
+        System.out.println(addressBookData);
+        addressBookService.addAddressBook(addressBookData, REST_IO);
+        long entries = addressBookService.countEntries(REST_IO);
+        Assert.assertEquals(4,entries);
+
+    }
 
 }
 
