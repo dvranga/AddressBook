@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3493a060-b85b-471c-b2f6-4aa9fbce2353" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/bridgelabz/addressbook/AddressBookTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bridgelabz/addressbook/AddressBookTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -149,7 +148,10 @@
       <updated>1606205688734</updated>
       <workItem from="1606205692164" duration="16415000" />
       <workItem from="1606289774235" duration="8710000" />
-      <workItem from="1606374219013" duration="11241000" />
+      <workItem from="1606374219013" duration="11321000" />
+      <workItem from="1606791956394" duration="319000" />
+      <workItem from="1606878864823" duration="1261000" />
+      <workItem from="1606885873348" duration="672000" />
     </task>
     <servers />
   </component>
